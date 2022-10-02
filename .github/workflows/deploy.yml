@@ -34,5 +34,5 @@ jobs:
       - id: ba6a1793-a284-43fc-a65e-cb99ce5dff9e
         name: Publish Package
         env:
-          GITHUB__NPM_REGISTRY_AUTHTOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_REGISTRY_AUTHTOKEN: ${{ secrets.NPM_REGISTRY_AUTHTOKEN }}
         run: npm publish
