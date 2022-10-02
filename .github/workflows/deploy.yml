@@ -1,0 +1,38 @@
+name: Continuous Deployment
+
+on:
+  push:
+    tags: [ "v**" ]
+
+jobs:
+
+  build:
+    name: Build and Publish Tagged Releases
+    runs-on: ubuntu-latest
+    steps:
+
+      - id: cde83915-687e-4aee-a242-4ae604b25b97
+        name: Check Out Repository
+        uses: actions/checkout@v3
+
+      - id: d5aaeaee-6044-45bc-a3d3-db6dcf443c40
+        name: Setup Node.js Environment
+        uses: actions/setup-node@v3
+
+      - id: ba2c602a-d5d9-4ffb-b52e-3be27121f31a
+        name: Install Packages
+        run: npm install
+
+      - id: f6efb14e-eb9b-4671-882d-67fc783af29b
+        name: Run Tests
+        run: npm test
+
+      - id: bbf06a42-26b4-4cce-b5f4-b76a5d7dee8d
+        name: Build Distribution
+        run: npm run dist
+
+      - id: ba6a1793-a284-43fc-a65e-cb99ce5dff9e
+        name: Publish Package
+        env:
+          GITHUB__NPM_REGISTRY_AUTHTOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm publish
