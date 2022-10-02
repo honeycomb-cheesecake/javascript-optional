@@ -19,6 +19,13 @@ interface Option<T> {
   timestamp(): number;
 
   /**
+   * Perform an function on the value if set, otherwise do nothing.
+   *
+   * @param func function to perform with the value set, or no-op if not set.
+   */
+  forEach(func: (value: T) => void): void;
+
+  /**
    * Apply a function on the (optional) value if non-empty.
    *
    * @param func function to apply to the optional value which returns a `Some` result if value is non-empty and a `None` if empty.
@@ -40,6 +47,13 @@ interface Option<T> {
    * @reurns the value if option is `Some` or the `otherwise` default if option is `None`.
    */
   getOrElse(otherwise: T): T;
+
+  /**
+   * Retrieves the value if `Some` or `null` if `None`.
+   *
+   * @returns @reurns the value if option is `Some` or the `null` if option is `None`.
+   */
+  getOrNull(): T | null;
 
   /**
    * Retrieves the value if `Some` or `undefined` if `None`.

@@ -10,22 +10,20 @@ export default class Some<T> implements Option<T> {
 
   constructor(value: T) {
 
-    if(value !== null) {
+    if (value !== null && value !== undefined) {
 
-      if(value !== undefined) {
-
-        this.millis = Date.now();
-        this.value = value;
-      }
-      else {
-
-        throw new Error("Set value cannot be undefined.");
-      }
+      this.millis = Date.now();
+      this.value = value;
     }
     else {
 
-      throw new Error("Set value cannot be null.");
+      throw new Error(`Set value cannot be ${value}.`);
     }
+  }
+
+  forEach(func: (value: T) => void): void {
+
+    func(this.value);
   }
 
   isEmpty(): boolean {
@@ -54,6 +52,11 @@ export default class Some<T> implements Option<T> {
   }
 
   getOrElse(_: T): T {
+
+    return this.value;
+  }
+
+  getOrNull(): T | null {
 
     return this.value;
   }

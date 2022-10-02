@@ -42,3 +42,48 @@ To install via `package.json`:
 ```
 "@honeycomb-cheesecake/optional": "[version]"
 ```
+
+## Usage
+
+### Objects
+
+The JavaScript Option package exposes the `IOption` interface as well as the `ISome` and `INone` interfaces that implement.
+
+| Interface | Implements | Description |
+| --------- | ---------- | ----------- |
+| `IOption` | | Interface to interact with potentially `null` and `undefined` values. |
+| `ISome` | `IOption` | Interface for values which are set. |
+| `INone` | `IOption` | Interface for values that have not been set. |
+
+To create `ISome` and `INone`, respective factory methods `Some` and `None` are available:
+
+```typescript
+import { IOption, None, Some }
+
+const some: IOption<string> = Some<string>("some value");
+const none: IOption<number> = None<number>();
+```
+
+It is important to note that `ISome` doesn't accept `null` and/or `undefined` and will throw an error:
+
+```typescript
+import { IOption, Some }
+
+const some: IOption<string[]> = Some<string[]>(["hello", "my", "dear"]); // Okay
+Some<number[]>(null); // Throws error.
+Some<string[]>(undefined); // Throws error.
+```
+
+In order to simplify the creation of optional values, an `Option` factory method is available and is recommended in most cases:
+
+```typescript
+import { IOption, Option }
+
+const some:  IOption<string> = Option<string>("some value"); // Returns an ISome<string>.
+const none1: IOption<string> = Option<string>(null);         // Returns an INone<string>.
+const none2: IOption<string> = Option<string>(undefined);    // Returns an INone<string>.
+```
+
+### Functions
+
+TODO.

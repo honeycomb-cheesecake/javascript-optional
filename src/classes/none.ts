@@ -12,6 +12,8 @@ export default class None<T> implements Option<T> {
     this.millis = Date.now();
   }
 
+  forEach(_: (value: T) => void): void { }
+
   isEmpty(): boolean {
 
     return true;
@@ -27,12 +29,12 @@ export default class None<T> implements Option<T> {
     return this.millis;
   }
 
-  flatMap<S>(func: (value: T) => Option<S>): Option<S> {
+  flatMap<S>(_: (value: T) => Option<S>): Option<S> {
 
     return new None();
   }
 
-  map<S>(func: (value: T) => S): Option<S> {
+  map<S>(_: (value: T) => S): Option<S> {
 
     return new None();
   }
@@ -40,6 +42,11 @@ export default class None<T> implements Option<T> {
   getOrElse(otherwise: T): T {
 
     return otherwise;
+  }
+
+  getOrNull(): T | null {
+
+    return null;
   }
 
   getOrUndefined(): T | undefined {
