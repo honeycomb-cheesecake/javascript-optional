@@ -1,6 +1,6 @@
 {
   "name": "@honeycomb-cheesecake/optional",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Optional module for JavaScript that provides interfaces to interact with potentially null/undefined values.",
   "main": "dist/index.js",
   "files": [
