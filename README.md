@@ -40,5 +40,5 @@ npm install @honeycomb-cheesecake/optional@[version]
 To install via `package.json`:
 
 ```
-"@honeycomb-cheesecake/optional": "[version]]"
+"@honeycomb-cheesecake/optional": "[version]"
 ```
