@@ -86,4 +86,70 @@ const none2: IOption<string> = Option<string>(undefined);    // Returns an INone
 
 ### Functions
 
-TODO.
+#### `id()`
+
+Returns a unique identifier for the `IOption`.
+
+```typescript
+import { IOption, Option } from "@honeycomb-cheesecake/optional";
+const valueSome: IOption<string> = Option("Some value.");
+const valueNone: IOption<string> = Option<string>(null);
+const resultSome: string = valueSome.id();
+const resultNone: string = valueNone.id();
+console.log(resultSome); // Prints id.
+console.log(resultNone); // Prints id.
+```
+
+#### `isEmpty()`
+
+Returns `true` if value is set (i.e. of type `ISome`), and returns `false` if value isn't set (i.e. of type `INone`).
+
+```typescript
+import { IOption, Option } from "@honeycomb-cheesecake/optional";
+const valueSome: IOption<string> = Option("Some value.");
+const valueNone: IOption<string> = Option<string>(null);
+const resultSome: boolean = valueSome.isEmpty();
+const resultNone: boolean = valueNone.isEmpty();
+console.log(resultSome); // Prints 'false'.
+console.log(resultNone); // Prints 'true'.
+```
+
+#### `isDefined()`
+
+Returns `false` if value is set (i.e. of type `ISome`), and returns `true` if value isn't set (i.e. of type `INone`).
+
+```typescript
+import { IOption, Option } from "@honeycomb-cheesecake/optional";
+const valueSome: IOption<string> = Option("Some value.");
+const valueNone: IOption<string> = Option<string>(null);
+const resultSome: boolean = valueSome.isDefined();
+const resultNone: boolean = valueNone.isDefined();
+console.log(resultSome); // Prints 'true'.
+console.log(resultNone); // Prints 'false'.
+```
+
+#### `timestamp()`
+
+Returns the epoch timestamp `number` of when the `IOption` value was set.
+
+```typescript
+import { IOption, Option } from "@honeycomb-cheesecake/optional";
+const valueSome: IOption<string> = Option("Some value.");
+const valueNone: IOption<string> = Option<string>(null);
+const resultSome: number = valueSome.timestamp();
+const resultNone: number = valueNone.timestamp();
+console.log(resultSome); // Prints timestamp.
+console.log(resultNone); // Prints timestamp.
+```
+
+#### `forEach()`
+
+Performs an action on the value if set without returning a value. If not set, this is a no-op.
+
+```typescript
+import { IOption, Option } from "@honeycomb-cheesecake/optional";
+const valueSome: IOption<string> = Option("Some value.");
+const valueNone: IOption<string> = Option<string>(null);
+valueSome.forEach(value => console.log(value)); // Prints "Some value.".
+valueNone.forEach(value => console.log(value)); // No op.
+```
