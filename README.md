@@ -153,3 +153,27 @@ const valueNone: IOption<string> = Option<string>(null);
 valueSome.forEach(value => console.log(value)); // Prints "Some value.".
 valueNone.forEach(value => console.log(value)); // No op.
 ```
+
+#### `flatMap(func)`
+
+TODO
+
+#### `map(func)`
+
+TODO
+
+#### `getOrElse(otherwiseValue)`
+
+TODO
+
+#### `getOrNull()`
+
+TODO
+
+#### `getOrUndefined()`
+
+TODO
+
+#### `doOtherwise(someFunc, noneFunc)`
+
+TODO
