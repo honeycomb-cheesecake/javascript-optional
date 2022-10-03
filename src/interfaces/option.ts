@@ -4,6 +4,11 @@
 interface Option<T> {
 
   /**
+   * @returns unique identifier for value.
+   */
+  id(): string;
+
+  /**
    * @returns `false` if optional value is `None` otherwise `true`.
    */
   isEmpty(): boolean;

@@ -31,8 +31,12 @@
     "url": "https://github.com/honeycomb-cheesecake/javascript-optional/issues"
   },
   "homepage": "https://github.com/honeycomb-cheesecake/javascript-optional#readme",
+  "dependencies": {
+    "uuid": "^9.0.0"
+  },
   "devDependencies": {
     "@types/jest": "^29.1.1",
+    "@types/uuid": "^8.3.4",
     "@babel/core": "^7.19.3",
     "@babel/preset-env": "^7.19.3",
     "@babel/preset-typescript": "^7.18.6",

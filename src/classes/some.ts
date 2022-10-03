@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 import Option from "../interfaces/option";
 
 /**
@@ -5,6 +6,7 @@ import Option from "../interfaces/option";
  */
 export default class Some<T> implements Option<T> {
 
+  private identifier: string = uuidv4();
   private millis: number;
   private value: T;
 
@@ -21,9 +23,9 @@ export default class Some<T> implements Option<T> {
     }
   }
 
-  forEach(func: (value: T) => void): void {
+  id(): string {
 
-    func(this.value);
+    return this.identifier;
   }
 
   isEmpty(): boolean {
@@ -39,6 +41,11 @@ export default class Some<T> implements Option<T> {
   timestamp(): number {
 
     return this.millis;
+  }
+
+  forEach(func: (value: T) => void): void {
+
+    func(this.value);
   }
 
   flatMap<S>(func: (value: T) => Option<S>): Option<S> {

@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 import Option from "../interfaces/option";
 
 /**
@@ -5,6 +6,7 @@ import Option from "../interfaces/option";
  */
 export default class None<T> implements Option<T> {
 
+  private identifier: string = uuidv4();
   private millis: number;
 
   constructor() {
@@ -12,7 +14,10 @@ export default class None<T> implements Option<T> {
     this.millis = Date.now();
   }
 
-  forEach(_: (value: T) => void): void { }
+  id(): string {
+
+    return this.identifier;
+  }
 
   isEmpty(): boolean {
 
@@ -28,6 +33,8 @@ export default class None<T> implements Option<T> {
 
     return this.millis;
   }
+
+  forEach(_: (value: T) => void): void { }
 
   flatMap<S>(_: (value: T) => Option<S>): Option<S> {
 
