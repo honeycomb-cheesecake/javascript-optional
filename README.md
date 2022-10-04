@@ -208,8 +208,8 @@ Returns the value if `ISome`, and returns `undefined` if `INone`.
 import { IOption, Option } from "@honeycomb-cheesecake/optional";
 const valueSome: IOption<string> = Option("Some value.");
 const valueNone: IOption<string> = Option<string>(null);
-console.log(valueSome.getOrNull());  // Prints "Some value.".
-console.log(valueNone.getOrNull());  // Prints undefined.
+console.log(valueSome.getOrUndefined());  // Prints "Some value.".
+console.log(valueNone.getOrUndefined());  // Prints undefined.
 ```
 
 #### `doOtherwise(someFunc, noneFunc)`
