@@ -73,8 +73,8 @@ export default class Some<T> implements Option<T> {
     return this.value;
   }
 
-  doOtherwise<S>(some: (value: T) => S, _: () => S): S {
+  doOtherwise<S>(someFunc: (value: T) => S, _: () => S): S {
 
-    return some(this.value);
+    return someFunc(this.value);
   }
 }

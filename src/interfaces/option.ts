@@ -48,10 +48,10 @@ interface Option<T> {
   /**
    * Retrieves the value if `Some` or the specified `otherwise` value if `None`.
    *
-   * @param otherwise default value if optional value is `None`.
+   * @param otherwiseValue default value if optional value is `None`.
    * @reurns the value if option is `Some` or the `otherwise` default if option is `None`.
    */
-  getOrElse(otherwise: T): T;
+  getOrElse(otherwiseValue: T): T;
 
   /**
    * Retrieves the value if `Some` or `null` if `None`.
@@ -70,11 +70,11 @@ interface Option<T> {
   /**
    * Applies `some` function if option is `Some` or applies the `none` function if option is `None`.
    *
-   * @param some function applied if `Some`.
-   * @param none function applied if `None`.
+   * @param someFunc function applied if `Some`.
+   * @param noneFunc function applied if `None`.
    * @returns value after function applied.
    */
-  doOtherwise<S>(some: (value: T) => S, none: () => S): S;
+  doOtherwise<S>(someFunc: (value: T) => S, noneFunc: () => S): S;
 }
 
 export default Option;

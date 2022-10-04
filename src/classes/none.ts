@@ -46,9 +46,9 @@ export default class None<T> implements Option<T> {
     return new None();
   }
 
-  getOrElse(otherwise: T): T {
+  getOrElse(otherwiseValue: T): T {
 
-    return otherwise;
+    return otherwiseValue;
   }
 
   getOrNull(): T | null {
@@ -61,8 +61,8 @@ export default class None<T> implements Option<T> {
     return undefined;
   }
 
-  doOtherwise<S>(_: (value: T) => S, none: () => S): S {
+  doOtherwise<S>(_: (value: T) => S, noneFunc: () => S): S {
 
-    return none();
+    return noneFunc();
   }
 }

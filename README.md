@@ -59,7 +59,6 @@ To create `ISome` and `INone`, respective factory methods `Some` and `None` are 
 
 ```typescript
 import { IOption, None, Some }
-
 const some: IOption<string> = Some<string>("some value");
 const none: IOption<number> = None<number>();
 ```
@@ -68,7 +67,6 @@ It is important to note that `ISome` doesn't accept `null` and/or `undefined` an
 
 ```typescript
 import { IOption, Some }
-
 const some: IOption<string[]> = Some<string[]>(["hello", "my", "dear"]); // Okay
 Some<number[]>(null); // Throws error.
 Some<string[]>(undefined); // Throws error.
@@ -78,10 +76,26 @@ In order to simplify the creation of optional values, an `Option` factory method
 
 ```typescript
 import { IOption, Option }
-
 const some:  IOption<string> = Option<string>("some value"); // Returns an ISome<string>.
 const none1: IOption<string> = Option<string>(null);         // Returns an INone<string>.
 const none2: IOption<string> = Option<string>(undefined);    // Returns an INone<string>.
+```
+
+Other helper factories have been included to facilitate development:
+
+```typescript
+import { IOption, Option, OptionEmptyString } from "@honeycomb-cheesecake/optional";
+const some: IOption<string> = Option("");            // Empty string resolved to ISome<string>.
+const none: IOption<string> = OptionEmptyString(""); // Empty string resolved to INone<string>.
+some.forEach(value => console.log(value));  // Prints "".
+none.forEach(value => console.log(value));  // No op.
+```
+
+```typescript
+import { OptionOrElse } from "@honeycomb-cheesecake/optional";
+console.error(OptionOrElse(10, 100))        // Prints 10.
+console.error(OptionOrElse(null, 100))      // Prints 100.
+console.error(OptionOrElse(undefined, 100)) // Prints 100.
 ```
 
 ### Functions
@@ -164,15 +178,39 @@ TODO
 
 #### `getOrElse(otherwiseValue)`
 
-TODO
+Returns the value if `ISome`, and returns the specified value if `INone`. Think of it as get with a default if not available.
+
+```typescript
+import { IOption, Option } from "@honeycomb-cheesecake/optional";
+const valueSome: IOption<string> = Option("Some value.");
+const valueNone: IOption<string> = Option<string>();
+console.log(valueSome.getOrElse("Otherwise value."));  // Prints "Some value.".
+console.log(valueNone.getOrElse("Otherwise value."));  // Prints "Otherwise value.".
+```
 
 #### `getOrNull()`
 
-TODO
+Returns the value if `ISome`, and returns `null` if `INone`.
+
+```typescript
+import { IOption, Option } from "@honeycomb-cheesecake/optional";
+const valueSome: IOption<string> = Option("Some value.");
+const valueNone: IOption<string> = Option<string>();
+console.log(valueSome.getOrNull());  // Prints "Some value.".
+console.log(valueNone.getOrNull());  // Prints null.
+```
 
 #### `getOrUndefined()`
 
-TODO
+Returns the value if `ISome`, and returns `undefined` if `INone`.
+
+```typescript
+import { IOption, Option } from "@honeycomb-cheesecake/optional";
+const valueSome: IOption<string> = Option("Some value.");
+const valueNone: IOption<string> = Option<string>(null);
+console.log(valueSome.getOrNull());  // Prints "Some value.".
+console.log(valueNone.getOrNull());  // Prints undefined.
+```
 
 #### `doOtherwise(someFunc, noneFunc)`
 
