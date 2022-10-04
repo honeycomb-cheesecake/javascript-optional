@@ -4,6 +4,7 @@ import ISome from "./classes/some";
 import None from "./factories/none";
 import Option from "./factories/option";
 import OptionEmptyString from "./factories/option-empty-string";
+import OptionOrElse from "./factories/option-or-else";
 import Some from "./factories/some";
 
 export {
@@ -13,5 +14,6 @@ export {
   None,
   Option,
   OptionEmptyString,
+  OptionOrElse,
   Some
 };
