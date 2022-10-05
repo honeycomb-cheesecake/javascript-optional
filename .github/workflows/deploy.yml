@@ -35,4 +35,4 @@ jobs:
         name: Publish Package
         env:
           NPM_REGISTRY_AUTHTOKEN: ${{ secrets.NPM_REGISTRY_AUTHTOKEN }}
-        run: npm publish
+        run: npm publish --access public
