@@ -1,3 +1,5 @@
+import DoOtherwise from "./factories/do-otherwise";
+import GetOrElse from "./factories/get-or-else";
 import INone from "./classes/none";
 import IOption from "./interfaces/option";
 import ISome from "./classes/some";
@@ -11,6 +13,8 @@ export {
   INone,
   IOption,
   ISome,
+  DoOtherwise,
+  GetOrElse,
   None,
   Option,
   OptionEmptyString,
