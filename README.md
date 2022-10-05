@@ -92,10 +92,17 @@ none.forEach(value => console.log(value));  // No op.
 ```
 
 ```typescript
-import { OptionOrElse } from "@honeycomb-cheesecake/optional";
-console.error(OptionOrElse(10, 100))        // Prints 10.
-console.error(OptionOrElse(null, 100))      // Prints 100.
-console.error(OptionOrElse(undefined, 100)) // Prints 100.
+import { GetOrElse } from "@honeycomb-cheesecake/optional";
+console.error(GetOrElse(10, 100))        // Prints 10.
+console.error(GetOrElse(null, 100))      // Prints 100.
+console.error(GetOrElse(undefined, 100)) // Prints 100.
+```
+
+```typescript
+import { DoOtherwise } from "@honeycomb-cheesecake/optional";
+console.log(DoOtherwise(100, (value: number) => `${value}`, () => "nothing"));       // Prints "100".
+console.log(DoOtherwise(null, (value: number) => `${value}`, () => "nothing"));      // Prints "nothing".
+console.log(DoOtherwise(undefined, (value: number) => `${value}`, () => "nothing")); // Prints "nothing".
 ```
 
 ### Functions
@@ -149,7 +156,7 @@ Returns the epoch timestamp `number` of when the `IOption` value was set.
 ```typescript
 import { IOption, Option } from "@honeycomb-cheesecake/optional";
 const valueSome: IOption<string> = Option("Some value.");
-const valueNone: IOption<string> = Option<string>(null);
+const valueNone: IOption<string> = Option<string>();
 const resultSome: number = valueSome.timestamp();
 const resultNone: number = valueNone.timestamp();
 console.log(resultSome); // Prints timestamp.
@@ -163,7 +170,7 @@ Performs an action on the value if set without returning a value. If not set, th
 ```typescript
 import { IOption, Option } from "@honeycomb-cheesecake/optional";
 const valueSome: IOption<string> = Option("Some value.");
-const valueNone: IOption<string> = Option<string>(null);
+const valueNone: IOption<string> = Option<string>();
 valueSome.forEach(value => console.log(value)); // Prints "Some value.".
 valueNone.forEach(value => console.log(value)); // No op.
 ```
@@ -207,7 +214,7 @@ Returns the value if `ISome`, and returns `undefined` if `INone`.
 ```typescript
 import { IOption, Option } from "@honeycomb-cheesecake/optional";
 const valueSome: IOption<string> = Option("Some value.");
-const valueNone: IOption<string> = Option<string>(null);
+const valueNone: IOption<string> = Option<string>();
 console.log(valueSome.getOrUndefined());  // Prints "Some value.".
 console.log(valueNone.getOrUndefined());  // Prints undefined.
 ```
