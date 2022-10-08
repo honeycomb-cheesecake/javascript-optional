@@ -237,4 +237,12 @@ console.log(valueNone.getOrUndefined());  // Prints undefined.
 
 #### `doOtherwise(someFunc, noneFunc)`
 
-TODO
+Executes `someFunc` on the value if `ISome`, and `noneFunc` if a `INone`.
+
+```typescript
+import { IOption, Option } from "@honeycomb-cheesecake/optional";
+const valueSome: IOption<string> = Option("Some value.");
+const valueNone: IOption<string> = Option<string>();
+console.log(valueSome.doOtherwise((value: number) => `${value}`, () => "nothing"));  // Prints "Some value.".
+console.log(valueNone.doOtherwise((value: number) => `${value}`, () => "nothing"));  // Prints "nothing".
+```
