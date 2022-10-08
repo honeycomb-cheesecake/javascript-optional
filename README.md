@@ -177,7 +177,15 @@ valueNone.forEach(value => console.log(value)); // No op.
 
 #### `flatMap(func)`
 
-TODO
+Performs the specified action on the value of set and returns an `IOption` containing the result. The action specified needs to return an `IOption` which differs from `map()` which expects the value.
+
+```typescript
+import { IOption, Option } from "@honeycomb-cheesecake/optional";
+const valueSome: IOption<number> = Option(1);
+const valueNone: IOption<number> = Option<number>();
+const flatMapSome: IOption<number> = valueSome.flatMap(value => Option(value * 10)); // `ISome` containing 10.
+const flatMapNone: IOption<number> = valueNone.flatMap(value => Option(value * 10)); // `INone`.
+```
 
 #### `map(func)`
 
