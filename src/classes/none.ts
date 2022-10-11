@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import NoneFactory from "../factories/none";
 import Option from "../interfaces/option";
 
 /**
@@ -38,12 +39,12 @@ export default class None<T> implements Option<T> {
 
   flatMap<S>(_: (value: T) => Option<S>): Option<S> {
 
-    return new None();
+    return NoneFactory();
   }
 
   map<S>(_: (value: T) => S): Option<S> {
 
-    return new None();
+    return NoneFactory();
   }
 
   getOrElse(otherwiseValue: T): T {
