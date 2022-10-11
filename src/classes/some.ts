@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import OptionFactory from "../factories/option";
 import Option from "../interfaces/option";
 
 /**
@@ -55,7 +56,7 @@ export default class Some<T> implements Option<T> {
 
   map<S>(func: (value: T) => S): Option<S> {
 
-    return new Some(func(this.value));
+    return OptionFactory(func(this.value));
   }
 
   getOrElse(_: T): T {
