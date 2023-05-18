@@ -52,6 +52,11 @@ export default class None<T> implements Option<T> {
     return otherwiseValue;
   }
 
+  getOrError(otherwiseError: Error): T {
+
+    throw otherwiseError;
+  }
+
   getOrNull(): T | null {
 
     return null;

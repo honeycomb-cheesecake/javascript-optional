@@ -34,7 +34,7 @@ interface Option<T> {
    * Apply a function on the (optional) value if non-empty.
    *
    * @param func function to apply to the optional value which returns a `Some` result if value is non-empty and a `None` if empty.
-   * @returns
+   * @returns optional value.
    */
   flatMap<S>(func: (value: T) => Option<S>): Option<S>;
 
@@ -42,6 +42,7 @@ interface Option<T> {
    * Apply a function on the (optional) value if non-empty.
    *
    * @param func function to apply to the optional value which returns a `Some` result if value is non-empty and a `None` if empty.
+   * @returns optional value.
    */
   map<S>(func: (value: T) => S): Option<S>;
 
@@ -49,9 +50,17 @@ interface Option<T> {
    * Retrieves the value if `Some` or the specified `otherwise` value if `None`.
    *
    * @param otherwiseValue default value if optional value is `None`.
-   * @reurns the value if option is `Some` or the `otherwise` default if option is `None`.
+   * @returns the value if option is `Some` or the `otherwise` default if option is `None`.
    */
   getOrElse(otherwiseValue: T): T;
+
+  /**
+   * Retrieves the value if `Some` or throws the specified `Error` if `None`.
+   *
+   * @param otherwiseError default error to throw if optional value is `None`.
+   * @returns the value if option is `Some`.
+   */
+  getOrError(otherwiseError: Error): T;
 
   /**
    * Retrieves the value if `Some` or `null` if `None`.

@@ -64,6 +64,11 @@ export default class Some<T> implements Option<T> {
     return this.value;
   }
 
+  getOrError(otherwiseError: Error): T {
+
+    return this.value;
+  }
+
   getOrNull(): T | null {
 
     return this.value;

@@ -211,6 +211,18 @@ console.log(valueSome.getOrElse("Otherwise value."));  // Prints "Some value.".
 console.log(valueNone.getOrElse("Otherwise value."));  // Prints "Otherwise value.".
 ```
 
+#### `getOrError(otherwiseError)`
+
+Returns the value if `ISome`, otherwise throws the specified error if `INone`. Think of this as almost like a validator of presence.
+
+```typescript
+import { IOption, Option } from "@honeycomb-cheesecake/optional";
+const valueSome: IOption<string> = Option("Some value.");
+const valueNone: IOption<string> = Option<string>();
+console.log(valueSome.getOrError(new Error("Something went wrong.")));  // Prints "Some value.".
+console.log(valueNone.getOrError(new Error("Something went wrong.")));  // Throws error as is `None`.
+```
+
 #### `getOrNull()`
 
 Returns the value if `ISome`, and returns `null` if `INone`.
