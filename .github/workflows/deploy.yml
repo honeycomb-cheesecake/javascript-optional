@@ -27,6 +27,23 @@ jobs:
         name: Run Tests
         run: npm test
 
+      - id: a1081814-c6ff-44d1-99ac-8962f5e1666a
+        name: Publish Test Report 1
+        uses: dorny/test-reporter@v1
+        if: success() || failure()
+        with:
+          name: Jest Tests
+          path: junit.xml
+          reporter: jest-junit
+
+      - id: c51387d6-9500-4cad-9532-5a9385abbf3e
+        name: Publish Test Report 2
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: success() || failure()
+        with:
+          files: |
+            junit.xml
+
       - id: bbf06a42-26b4-4cce-b5f4-b76a5d7dee8d
         name: Build Distribution
         run: npm run dist
