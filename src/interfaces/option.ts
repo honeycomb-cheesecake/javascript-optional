@@ -24,9 +24,9 @@ interface Option<T> {
   timestamp(): number;
 
   /**
-   * Perform an function on the value if set, otherwise do nothing.
+   * Perform a function on the value if `Some`, otherwise do nothing.
    *
-   * @param func function to perform with the value set, or no-op if not set.
+   * @param func function to perform with the value if `Some`, or no-op if `None`..
    */
   forEach(func: (value: T) => void): void;
 
